@@ -36,12 +36,7 @@ data class Cons<out A>(val head: A, val tail: ADTList<A>): ADTList<A>()
 
 typealias HString = ADTList<Char>
 
-fun HString.show(): String {
-    return when (this) {
-        is Nil -> ""
-        is Cons -> head + tail.show()
-    }
-}
+fun HString.show(): String = foldr(Char::plus, "")
 
 fun String.hString(): HString {
     return if (isEmpty()) {
